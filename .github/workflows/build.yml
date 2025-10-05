@@ -1,0 +1,40 @@
+name: Build Arch Live ISO
+
+on:
+  push:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    container:
+      image: archlinux@sha.github/workflows/build.yml256:2eb1a56a6036b1f70e63ca714814fe304a8f20d29ab425b4f056f34508500000
+      options: --privileged
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Arch Live ISO Build
+        run: |
+          df -h
+          pacman -Sy --noconfirm archiso wget which
+          /usr/bin/env bash -eux $(which mkarchiso) -v . || df -h
+          # Find the ISO file and move it to ./output.iso for consistent naming
+          find out/ -name '*.iso'
+          # find out/ -name '*.iso' -exec mv {} ./output.iso \;
+        shell: sh
+
+      - name: Upload files
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -e
+          ls -lh out/* # Assuming you have some files in out/ that you would like to upload
+          wget -c https://github.com/probonopd/uploadtool/raw/master/upload.sh
+          bash upload.sh out/*.iso
