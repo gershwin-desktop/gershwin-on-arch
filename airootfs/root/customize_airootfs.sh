@@ -16,6 +16,10 @@ mount -t proc proc /proc
 mkdir -p /root
 cd /root
 
+# WORKAROUND: Pin device-mapper due to https://github.com/gershwin-desktop/gershwin-on-arch/issues/1
+pacman -U https://archive.archlinux.org/packages/d/device-mapper/device-mapper-2.03.36-1-x86_64.pkg.tar.zst
+grep -q '^IgnorePkg.*device-mapper' /etc/pacman.conf || echo 'IgnorePkg = device-mapper' | tee -a /etc/pacman.conf
+
 # https://github.com/gershwin-desktop/gershwin-build
 git clone https://github.com/gershwin-desktop/gershwin-build.git && cd gershwin-build
 ./bootstrap.sh
