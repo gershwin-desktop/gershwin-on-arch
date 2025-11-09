@@ -1,5 +1,8 @@
 # Gershwin-on-Arch Live ISO builder
 
+> [!WARNING]  
+> The ISOs generated in this repository are for developers and may contain known issues.
+
 Gershwin build and installation takes place in [customize_airootfs.sh](airootfs/root/customize_airootfs.sh)
 
 Autologin is controlled by the display manager, and if there isn't one, startx is run from
