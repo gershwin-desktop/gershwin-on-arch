@@ -16,6 +16,9 @@ mount -t proc proc /proc
 mkdir -p /root
 cd /root
 
+# Workaround for https://github.com/gershwin-desktop/gershwin-on-arch/issues/1
+pacman -Sy core/mkinitpio
+
 # https://github.com/gershwin-desktop/gershwin-build
 git clone https://github.com/gershwin-desktop/gershwin-build.git && cd gershwin-build
 ./bootstrap.sh
