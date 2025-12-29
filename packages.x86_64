@@ -182,3 +182,6 @@ dbus
 libxcb
 xcb-util-cursor
 xcb-util-wm
+
+# automounter; running 'devmon' will automount removable drives
+udevil-git
