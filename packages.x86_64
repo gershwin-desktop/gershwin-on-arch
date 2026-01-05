@@ -185,3 +185,5 @@ xcb-util-wm
 
 # automounter; running 'devmon' will automount removable drives
 # udevil # TODO: Where to get this from?
+
+sshfs
