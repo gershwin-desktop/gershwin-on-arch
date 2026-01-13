@@ -187,3 +187,9 @@ xcb-util-wm
 # udevil # TODO: Where to get this from?
 
 sshfs
+
+# Needed for Network prefPane
+networkmanager
+
+# Needed for Audio prefPane
+alsa-utils
