@@ -23,6 +23,7 @@ jobs:
       - name: Arch Live ISO Build
         run: |
           df -h
+          pacman -Sy --noconfirm archlinux-keyring
           pacman -Sy --noconfirm archiso wget which
           /usr/bin/env bash -eux $(which mkarchiso) -v . || df -h
           iso_file=$(find out/ -name '*.iso' | head -n 1)
