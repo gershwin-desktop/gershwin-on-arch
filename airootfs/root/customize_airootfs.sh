@@ -8,8 +8,6 @@ sed -i -e 's|^CheckSpace|# CheckSpace|g' /etc/pacman.conf # Comment out CheckSpa
 pacman -Scc --noconfirm
 pacman-key --init
 pacman-key --populate archlinux
-pacman-key --refresh-keys
-pacman -Sy archlinux-keyring --noconfirm
 
 # Some GNUstep build scripts need /proc
 mount -t proc proc /proc
