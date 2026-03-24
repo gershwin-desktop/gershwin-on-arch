@@ -26,6 +26,8 @@ jobs:
           pacman-key --init
           pacman-key --populate archlinux
           pacman -Sy --noconfirm archlinux-keyring
+          rm -rf /etc/pacman.d/gnupg
+          pacman-key --init
           pacman-key --populate archlinux
           pacman -Sy --noconfirm --overwrite '*' archiso wget which
           /usr/bin/env bash -eux $(which mkarchiso) -v . || df -h
