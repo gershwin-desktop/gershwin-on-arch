@@ -23,11 +23,7 @@ jobs:
       - name: Arch Live ISO Build
         run: |
           df -h
-          pacman-key --init
-          pacman-key --populate archlinux
-          pacman -Sy --noconfirm archlinux-keyring
-          pacman-key --populate archlinux
-          pacman -Sy --noconfirm --overwrite '*' archiso wget which
+          pacman -Sy --noconfirm archiso wget which
           /usr/bin/env bash -eux $(which mkarchiso) -v . || df -h
           iso_file=$(find out/ -name '*.iso' | head -n 1)
           date_str=$(date +%Y%m%d%H%M%S)
