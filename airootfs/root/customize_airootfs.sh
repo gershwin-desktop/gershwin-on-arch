@@ -8,21 +8,15 @@ sed -i -e 's|^CheckSpace|# CheckSpace|g' /etc/pacman.conf # Comment out CheckSpa
 pacman -Scc --noconfirm
 pacman-key --init
 pacman-key --populate archlinux
-pacman-key --refresh-keys
-pacman -Sy archlinux-keyring --noconfirm
 
 # Some GNUstep build scripts need /proc
 mount -t proc proc /proc
 
-mkdir -p /root
-cd /root
-
-# https://github.com/gershwin-desktop/gershwin-build
-git clone https://github.com/gershwin-desktop/gershwin-build.git && cd gershwin-build
-./bootstrap.sh
-./checkout.sh
-sudo -E make install
-cd /root
+# https://github.com/gershwin-desktop/gershwin-developer
+git clone https://github.com/gershwin-desktop/gershwin-developer.git /Developer
+/Developer/Library/Scripts/Bootstrap.sh
+/Developer/Library/Scripts/Checkout.sh
+cd /Developer && sudo -E make install
 
 . /System/Library/Makefiles/GNUstep.sh
 
