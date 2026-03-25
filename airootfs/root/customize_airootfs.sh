@@ -25,6 +25,21 @@ mkdir -p /System/Applications /System/Library/Tools
 sudo mv /Local/Applications/* /System/Applications || true
 sudo mv /Local/Library/Tools/* /System/Library/Tools || true
 
+# Initialize Directory Services (creates built-in admin user with no password)
+dscli init
+
+# Enable services for the live session
+systemctl enable gdomap dshelper loginwindow
+
+# Configure LoginWindow for auto-login
+mkdir -p /Local/Library/Preferences
+cat > /Local/Library/Preferences/LoginWindow.plist <<\EOF
+{
+    lastLoggedInUser = admin;
+    lastSession = "/System/Library/Scripts/Gershwin.sh";
+}
+EOF
+
 # Otherwise ISO creation fails
 umount /proc
 
