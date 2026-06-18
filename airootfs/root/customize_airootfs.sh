@@ -31,6 +31,9 @@ dscli init
 # Enable services for the live session
 systemctl enable gdomap dshelper loginwindow avahi-daemon
 
+# Allow empty password for sshd
+sed -i 's/^[[:space:]#]*PermitEmptyPasswords[[:space:]]*.*/PermitEmptyPasswords yes/' /etc/ssh/ssh_config
+
 # Configure LoginWindow for auto-login
 mkdir -p /Local/Library/Preferences
 cat > /Local/Library/Preferences/LoginWindow.plist <<\EOF
