@@ -29,7 +29,7 @@ sudo mv /Local/Library/Tools/* /System/Library/Tools || true
 dscli init
 
 # Enable services for the live session
-systemctl enable gdomap dshelper loginwindow
+systemctl enable gdomap dshelper loginwindow avahi-daemon
 
 # Configure LoginWindow for auto-login
 mkdir -p /Local/Library/Preferences
