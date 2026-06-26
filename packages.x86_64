@@ -193,3 +193,6 @@ networkmanager
 
 # Needed for Audio prefPane
 alsa-utils
+
+# Needed for Sharing
+openssh-server
