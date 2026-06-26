@@ -196,4 +196,4 @@ networkmanager
 alsa-utils
 
 # Needed for Sharing
-openssh-server
+openssh
